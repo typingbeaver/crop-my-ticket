@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop My Ticket</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="fontawesome-5.15.3/css/fontawesome.css" rel="stylesheet">
+  <link href="fontawesome-5.15.3/css/solid.css" rel="stylesheet">
+  <link href="fontawesome-5.15.3/css/brands.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://unpkg.com/downloadjs@1.4.7/download.js"></script>
+  <script src="js/crop.js"></script>
+</head>
+
+<body class="bg-gray">
+  <nav class="navbar px-2 sticky-top navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="">
+        <i class="fas fa-ticket-alt pe-2" aria-hidden="true"></i>
+        CROP MY TICKET
+      </a>
+      <span class="navbar-text">
+        Make your ticket handier.
+      </span>
+    </div>
+  </nav>
+
+  <div class="">
+    <div class="container-sm mt-3">
+      
+      <div class="card text-center">
+
+        <div class="card-header">
+            <p class="fs-3 fw-light mb-1">Semesterticket zuschneiden</p>
+
+            <div class="input-group mx-auto" style="max-width: 512px;">
+              <input type="file" id="ticket" accept="application/pdf" class="form-control">
+              <button onclick="convert()" class="btn btn-danger">
+                <i class="fas fa-cut pe-1" aria-hidden="true"></i>
+                Crop
+              </button>
+            </div>
+        </div>
+
+        <div id="pdfView" class="card-body" hidden>
+          [insert PDF viewer here]
+        </div>
+
+        <div id="downloadView" class="card-footer" hidden>
+          <button onclick="save()" id="saveBtn" disabled class="btn btn-dark">
+            <i class="fas fa-download pe-1" aria-hidden="true"></i>
+            Download PDF
+          </button>
+        </div>
+
+      </div>
+
+      <div class="row mt-4 mx-1 mx-sm-0 p-1 rounded bg-danger text-white">
+        <div class="col">
+          Made in 2021
+        </div>
+        <div class="col text-end">
+          <a href="https://github.com/typingbeaver/crop-your-ticket" class="text-decoration-none text-white">
+            <i class="fab fa-github-square" aria-hidden="true"></i>
+            Github
+          </a>
+        </div>
+      </div>
+  
+    </div>
+
+  </div>
+</body>
+</html>
