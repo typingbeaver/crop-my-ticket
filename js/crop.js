@@ -30,7 +30,7 @@ function convert() {
     pdfBytes = await pdfDoc.save();
 
     // Show PDF and Download button
-    pdfView.hidden = false;
+    // pdfView.hidden = false;
     downloadView.hidden = false;
     saveBtn.disabled = false;
     };
