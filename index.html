@@ -32,54 +32,52 @@
     </div>
   </nav>
 
-  <div class="">
-    <div class="container-sm mt-3">
-      
-      <div class="card text-center">
+  <div class="container mt-3">
+    
+    <div class="card text-center">
 
-        <div class="card-header">
-            <p class="fs-3 fw-light mb-1">Semesterticket zuschneiden</p>
+      <div class="card-header">
+          <p class="fs-3 fw-light mb-1">Semesterticket zuschneiden</p>
 
-            <div class="input-group mx-auto" style="max-width: 512px;">
-              <input type="file" id="ticket" accept="application/pdf" class="form-control">
-              <button onclick="convert()" class="btn btn-danger">
-                <i class="fas fa-cut pe-1" aria-hidden="true"></i>
-                Crop
-              </button>
-            </div>
-        </div>
-
-        <div id="pdfView" class="card-body" hidden>
-          <div id="pdfSize">
-            <canvas id="pdf-canvas" class="border border-1 shadow"></canvas>
+          <div class="input-group mx-auto" style="max-width: 512px;">
+            <input type="file" id="ticket" accept="application/pdf" class="form-control">
+            <button onclick="convert()" class="btn btn-danger">
+              <i class="fas fa-cut pe-1" aria-hidden="true"></i>
+              Crop
+            </button>
           </div>
-        </div>
-
-        <div id="downloadView" class="card-footer" hidden>
-          <button onclick="save()" id="saveBtn" disabled class="btn btn-dark">
-            <i class="fas fa-download pe-1" aria-hidden="true"></i>
-            Download PDF
-          </button>
-        </div>
-
       </div>
 
-      <p class="fw-light pt-1 text-center"> <strong>Datenschutzhinweis:</strong> Die Umwandlung findet ausschließlich auf dem Gerät statt. Die PDF wird an keinen Server gesendet.</p>
-
-      <div class="row mt-4 mx-1 mx-sm-0 p-1 rounded bg-danger text-white">
-        <div class="col">
-          Made in 2021
-        </div>
-        <div class="col text-end">
-          <a href="https://github.com/typingbeaver/crop-your-ticket" class="text-decoration-none text-white">
-            <i class="fab fa-github-square" aria-hidden="true"></i>
-            Github
-          </a>
+      <div id="pdfView" class="card-body" hidden>
+        <div id="pdfSize">
+          <canvas id="pdf-canvas" class="border border-1 shadow"></canvas>
         </div>
       </div>
-  
+
+      <div id="downloadView" class="card-footer" hidden>
+        <button onclick="save()" id="saveBtn" disabled class="btn btn-dark">
+          <i class="fas fa-download pe-1" aria-hidden="true"></i>
+          Download PDF
+        </button>
+      </div>
+
+    </div>
+
+    <p class="fw-light pt-1 text-center"> <strong>Datenschutzhinweis:</strong> Die Umwandlung findet ausschließlich auf dem Gerät statt. Die PDF wird an keinen Server gesendet.</p>
+
+    <div class="row mt-4 mx-1 mb-2 p-1 rounded bg-danger text-white">
+      <div class="col">
+        Made in 2021
+      </div>
+      <div class="col text-end">
+        <a href="https://github.com/typingbeaver/crop-your-ticket" class="text-decoration-none text-white">
+          <i class="fab fa-github-square" aria-hidden="true"></i>
+          Github
+        </a>
+      </div>
     </div>
 
   </div>
+
 </body>
 </html>
