@@ -54,18 +54,21 @@ function convert() {
             // Fetch the first page
             pdf.getPage(1).then(function(page) {
                 
-                var viewport = page.getViewport({scale: 1});
+                var desiredWidth = document.getElementById("pdfSize").clientWidth;
+                var viewport = page.getViewport({ scale: 1, });
+                var scale = desiredWidth / viewport.width;
+                var scaledViewport = page.getViewport({ scale: scale, });
 
                 // Prepare canvas using PDF page dimensions
                 var canvas = document.getElementById('pdf-canvas');
                 var context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
+                canvas.height = scaledViewport.height;
+                canvas.width = scaledViewport.width;
 
                 // Render PDF page into canvas context
                 var renderContext = {
                     canvasContext: context,
-                    viewport: viewport
+                    viewport: scaledViewport
                 };
                 page.render(renderContext);
             });
