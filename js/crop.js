@@ -1,6 +1,6 @@
 const { PDFDocument, PDF } = PDFLib;
 var file;
-var pdfBytes;
+var pdfData;
 
 function convert() {
     // Open and read file
@@ -27,10 +27,13 @@ function convert() {
         viewerPrefs.setDisplayDocTitle(true);
 
         // Save data
-        pdfBytes = await pdfDoc.save();
+        pdfData = await pdfDoc.save();
 
-        // Show PDF and Download button
-        // pdfView.hidden = false;
+        // Show PDF
+        renderPage(pdfData);     
+        pdfView.hidden = false;
+
+        // Show Download button
         downloadView.hidden = false;
         saveBtn.disabled = false;
     };
@@ -38,8 +41,39 @@ function convert() {
     reader.onerror = function() {
         console.log(reader.error);
     };
+
+    // Page Rendering
+    function renderPage() {
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/pdfjs-2.9.359-dist/build/pdf.worker.js';
+
+        // Load PDF
+        var loadingTask = pdfjsLib.getDocument({data: pdfData});
+        loadingTask.promise.then(function(pdf) {
+        
+            // Fetch the first page
+            pdf.getPage(1).then(function(page) {
+                
+                var viewport = page.getViewport({scale: 1});
+
+                // Prepare canvas using PDF page dimensions
+                var canvas = document.getElementById('pdf-canvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render PDF page into canvas context
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        });
+    }
+
 }
 
 function save() {
-    download(pdfBytes, "NRW/VRS-Semester" + file.name, "application/pdf");
+    download(pdfData, "NRW/VRS-Semester" + file.name, "application/pdf");
 }
