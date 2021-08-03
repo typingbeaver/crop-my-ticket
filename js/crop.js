@@ -45,7 +45,7 @@ function convert() {
     // Page Rendering
     function renderPage() {
         // The workerSrc property shall be specified.
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/pdfjs-2.9.359-dist/build/pdf.worker.js';
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/pdfjs-2.9.359-dist/build/pdf.worker.min.js';
 
         // Load PDF
         var loadingTask = pdfjsLib.getDocument({data: pdfData});
