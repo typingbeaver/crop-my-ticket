@@ -14,7 +14,7 @@ function convert() {
         
         // Crop to ticket
         var page = pdfDoc.getPage(0);
-        page.setCropBox(56, 577, 457, 230);
+        page.setCropBox(56, 579, 457, 228);
 
         // Edit metadata
         pdfDoc.setTitle('Semesterticket NRW/VRS');
@@ -30,8 +30,9 @@ function convert() {
         pdfData = await pdfDoc.save();
 
         // Show PDF
-        renderPage(pdfData);     
-        pdfView.hidden = false;
+        renderPage(pdfData); 
+        ticketMockup.hidden = true;    
+        ticketCanvas.hidden = false;
 
         // Show Download button
         downloadView.hidden = false;
@@ -54,13 +55,13 @@ function convert() {
             // Fetch the first page
             pdf.getPage(1).then(function(page) {
                 
-                var desiredWidth = document.getElementById("pdfSize").clientWidth;
+                var desiredWidth = document.getElementById("imageBox").clientWidth;
                 var viewport = page.getViewport({ scale: 1, });
                 var scale = desiredWidth / viewport.width;
                 var scaledViewport = page.getViewport({ scale: scale, });
 
                 // Prepare canvas using PDF page dimensions
-                var canvas = document.getElementById('pdf-canvas');
+                var canvas = document.getElementById('ticketCanvas');
                 var context = canvas.getContext('2d');
                 canvas.height = scaledViewport.height;
                 canvas.width = scaledViewport.width;
